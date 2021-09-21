@@ -20,8 +20,17 @@ def use_prefixes() -> List[str]:
 
 
 def prime_integer_summation() -> int:
+    primes = []
+    is_prime = True
+    for number in range(2, 100):
+        is_prime = True
+        for divider in range(2, number):
+            if number % divider == 0:
+                is_prime = False
+        if is_prime:
+            primes.append(number)
+
     sum = 0
-    primes = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
     for number in primes:
         sum += number
     return sum
@@ -61,9 +70,7 @@ def verify_ages(groups: List[List[int]]) -> List[bool]:
                 if age == 50:
                     equals_50 = True
                 if age > 70:
-                    older_70 = True
-                #print(older_70, equals_50, younger_18, equals_25, group)
-                
+                    older_70 = True          
             if equals_25:
                 groupes_acceptables.append(group)
             else:
@@ -74,23 +81,7 @@ def verify_ages(groups: List[List[int]]) -> List[bool]:
                 elif younger_18 == False and equals_50 and older_70 == False:
                     groupes_acceptables.append(group)
                 else:
-                    continue
-
-                # if younger_18 and equals_25 == False:
-                #     break
-                # elif younger_18 and equals_25:
-                #     groupes_acceptables.append(group)
-                #     break
-                # else:
-                #     if equals_50 and older_70 and equals_25 == False:
-                #         break
-                #     elif equals_50 and older_70 and equals_25:
-                #         groupes_acceptables.append(group)
-                #         break
-                #     elif older_70 and equals_50 == False:
-                #         groupes_acceptables.append(group)
-                #         break
-            
+                    continue     
     return groupes_acceptables
 
 
