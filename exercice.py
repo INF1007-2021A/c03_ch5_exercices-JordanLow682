@@ -62,6 +62,7 @@ def verify_ages(groups: List[List[int]]) -> List[bool]:
                     equals_50 = True
                 if age > 70:
                     older_70 = True
+                #print(older_70, equals_50, younger_18, equals_25, group)
                 
             if equals_25:
                 groupes_acceptables.append(group)
@@ -73,18 +74,22 @@ def verify_ages(groups: List[List[int]]) -> List[bool]:
                 elif younger_18 == False and equals_50 and older_70 == False:
                     groupes_acceptables.append(group)
                 else:
-                    break
+                    continue
 
                 # if younger_18 and equals_25 == False:
                 #     break
                 # elif younger_18 and equals_25:
                 #     groupes_acceptables.append(group)
-                # if equals_50 and older_70 and equals_25 == False:
                 #     break
-                # elif equals_50 and older_70 and equals_25:
-                #     groupes_acceptables.append(group)
-                # elif older_70 and equals_50 == False:
-                #     groupes_acceptables.append(group)
+                # else:
+                #     if equals_50 and older_70 and equals_25 == False:
+                #         break
+                #     elif equals_50 and older_70 and equals_25:
+                #         groupes_acceptables.append(group)
+                #         break
+                #     elif older_70 and equals_50 == False:
+                #         groupes_acceptables.append(group)
+                #         break
             
     return groupes_acceptables
 
