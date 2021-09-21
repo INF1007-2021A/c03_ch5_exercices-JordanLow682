@@ -20,7 +20,7 @@ def use_prefixes() -> List[str]:
 
 
 def prime_integer_summation() -> int:
-    primes = []
+    somme = 0
     is_prime = True
     for number in range(2, 100):
         is_prime = True
@@ -28,12 +28,8 @@ def prime_integer_summation() -> int:
             if number % divider == 0:
                 is_prime = False
         if is_prime:
-            primes.append(number)
-
-    sum = 0
-    for number in primes:
-        sum += number
-    return sum
+            somme += number
+    return somme
 
 
 def factorial(number: int) -> int:
