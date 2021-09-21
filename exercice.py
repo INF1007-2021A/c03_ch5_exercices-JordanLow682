@@ -6,29 +6,87 @@ from typing import List
 
 
 def convert_to_absolute(number: float) -> float:
-    return 0
+    if number < 0:
+        number *= -1
+    return number
 
 
 def use_prefixes() -> List[str]:
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
-
-    return [""]
+    names = []
+    for letter in prefixes:
+        names.append(letter + suffixe)
+    return names
 
 
 def prime_integer_summation() -> int:
-    return 0
+    sum = 0
+    primes = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
+    for number in primes:
+        sum += number
+    return sum
 
 
 def factorial(number: int) -> int:
-    return 0
+    result = 1
+    while number > 0:
+        result *= number
+        number -= 1
+    return result
 
 
 def use_continue() -> None:
-    pass
+    nombres = []
+    for number in range(1, 11):
+        if number == 5:
+            continue
+        else:
+            nombres.append(number)
+    print(nombres)
+    return None
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
-    return []
+    groupes_acceptables = []
+    older_70, equals_50, younger_18, equals_25 = False, False, False, False
+
+    for group in groups:
+        if len(group) > 3 and len(group) < 11:
+            older_70, equals_50, younger_18, equals_25 = False, False, False, False
+            for age in group:
+                if age == 25:
+                    equals_25 = True
+                if age < 18:
+                    younger_18 = True
+                if age == 50:
+                    equals_50 = True
+                if age > 70:
+                    older_70 = True
+                
+            if equals_25:
+                groupes_acceptables.append(group)
+            else:
+                if younger_18 == False and equals_50 == False and older_70 == False:
+                    groupes_acceptables.append(group)
+                elif younger_18 == False and equals_50 == False and older_70:
+                    groupes_acceptables.append(group)
+                elif younger_18 == False and equals_50 and older_70 == False:
+                    groupes_acceptables.append(group)
+                else:
+                    break
+
+                # if younger_18 and equals_25 == False:
+                #     break
+                # elif younger_18 and equals_25:
+                #     groupes_acceptables.append(group)
+                # if equals_50 and older_70 and equals_25 == False:
+                #     break
+                # elif equals_50 and older_70 and equals_25:
+                #     groupes_acceptables.append(group)
+                # elif older_70 and equals_50 == False:
+                #     groupes_acceptables.append(group)
+            
+    return groupes_acceptables
 
 
 def main() -> None:
